@@ -1,21 +1,50 @@
-var inquirer = require("inquirer");
+var word = require('./word.js');
+var inquirer = require('inquirer');
 
-var words = ["giraffe", "hyena", "hippo"];
-var randomWord = words[Math.floor(Math.random() * words.length)]
+var wordList = ["Murial", "Thirthy", "Filthy","Arlington"];
+var randomWord =wordList[Math.floor(Math.random() * wordList.length)]
 
-//console.log(randomWord)
-//console.log(randomWord.indexOf('a') > -1)
-inquirer.prompt([
-		{
-			type: "input",
-			message: "Guess a letter in the word",
-			name: "letter"
-		}
-	]).then(function(answers){
+
+function playGame() {
+	inquirer.prompt(
+			{
+					type: "input",
+					name: "userGuess",
+					message: "Guess a Letter: "
+			}
+	).then(function(answers) {
 		console.log("Random word is " + randomWord);
 		if(randomWord.indexOf(answers.letter) > -1){
-			console.log("Letter " + answers.letter + " is in the word")
+			console.log("CORRECT!")
 		} else {
-			console.log("Letter " + answers.letter + " is not in the word")
+			console.log("INCORRECT")
 		}
-});
+		inquirer.prompt(
+			{
+					type: "input",
+					name: "userGuess",
+					message: "Guess a Letter: "
+			}
+	).then(function(answers) {
+		console.log("Random word is " + randomWord);
+		if(randomWord.indexOf(answers.letter) > -1){
+			console.log("CORRECT!")
+		} else {
+			console.log("INCORRECT")
+		}
+		
+	})	
+	})
+	function isGuessed(){
+		if (lettersGuessed.includes(userGuess)) {
+			console.log('already guessed, try again')
+
+	} else {
+		lettersGuessed.push(userGuess);
+	
+	}
+}
+	
+}
+
+playGame();

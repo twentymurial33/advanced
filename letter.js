@@ -1,26 +1,20 @@
 
-var Letter=function(){
-   this.name=""
-   this.guessed=false
-   this.store=function(){
-    if(this.guessed){
-        return(this.name)
-    // if (this.guessed){
-       
-    // }
+var Letter =function(character)  {
+    this.character = character
+    this.guessed = false
+    this.store = function() {
+        if (this.guessed) {
+            return (this.character)
+        }
     }
-   }
- this.checked=function(character){
-     if(this.name==character)
-     this.guessed=true
- }
+    this.check = function (userGuess) {
+        if ( userGuess === this.character) {
+            this.guessed = true;
+    } 
 }
 
+}
+module.exports = Letter;
 
-module.exports= Letter;
 var letter=new Letter()
-// console.log(letter.store())
 letter.name="M"
-// console.log(letter.store())
-console.log(letter.checked("M"))
-console.log(letter.store())
